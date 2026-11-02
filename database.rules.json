@@ -3,29 +3,29 @@
     ".read": false,
     ".write": false,
     "users": {
-      ".read": "auth != null && (auth.token.email_verified === true && auth.token.email === 'admin@example.com')",
+      ".read": "auth != null && (auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com')",
       "$uid": {
         ".read": "auth != null && auth.uid === $uid",
-        ".write": "auth != null && ((auth.token.email_verified === true && auth.token.email === 'admin@example.com') || (auth.uid === $uid && !data.exists() && newData.child('status').val() === 'pending'))",
+        ".write": "auth != null && ((auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com') || (auth.uid === $uid && !data.exists() && newData.child('status').val() === 'pending'))",
         ".validate": "newData.hasChildren(['name','email','status']) && newData.child('name').isString() && newData.child('name').val().length <= 60 && newData.child('email').isString()"
       }
     },
     "presence": {
-      ".read": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'admin@example.com'))",
+      ".read": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com'))",
       "$uid": {
-        ".write": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'admin@example.com')) && auth.uid === $uid"
+        ".write": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com')) && auth.uid === $uid"
       }
     },
     "att": {
-      ".read": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'admin@example.com'))",
+      ".read": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com'))",
       "$uid": {
-        ".write": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'admin@example.com')) && auth.uid === $uid"
+        ".write": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com')) && auth.uid === $uid"
       }
     },
     "chat": {
-      ".read": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'admin@example.com'))",
+      ".read": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com'))",
       "$id": {
-        ".write": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'admin@example.com')) && !data.exists()",
+        ".write": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com')) && !data.exists()",
         ".validate": "newData.child('uid').val() === auth.uid && newData.child('text').isString() && newData.child('text').val().length <= 500"
       }
     }
