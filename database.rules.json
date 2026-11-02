@@ -28,6 +28,90 @@
         ".write": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com')) && !data.exists()",
         ".validate": "newData.child('uid').val() === auth.uid && newData.child('text').isString() && newData.child('text').val().length <= 500"
       }
+    },
+    "media": {
+      ".read": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com'))",
+      "$k": {
+        ".write": "auth != null && (root.child('users/'+auth.uid+'/status').val() === 'approved' || (auth.token.email_verified === true && auth.token.email === 'yuaig0411@gmail.com')) && ($k === 'video' || $k === 'music')",
+        ".validate": "newData.child('v').val() === 1",
+        "v": {
+          ".validate": "newData.isNumber()"
+        },
+        "cur": {
+          ".validate": "newData.hasChildren(['t','at'])",
+          "t": {
+            ".validate": "newData.hasChildren(['id','vid','title','channel','hue'])",
+            "id": {
+              ".validate": "newData.isString() && newData.val().length <= 40"
+            },
+            "vid": {
+              ".validate": "newData.isString() && newData.val().length === 11"
+            },
+            "title": {
+              ".validate": "newData.isString() && newData.val().length <= 300"
+            },
+            "channel": {
+              ".validate": "newData.isString() && newData.val().length <= 120"
+            },
+            "dur": {
+              ".validate": "newData.isNumber()"
+            },
+            "hue": {
+              ".validate": "newData.isNumber()"
+            },
+            "votes": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          },
+          "at": {
+            ".validate": "newData.isNumber()"
+          },
+          "sk": {
+            ".validate": "newData.isNumber()"
+          },
+          "$other": {
+            ".validate": false
+          },
+          "pz": {
+            ".validate": "newData.isNumber()"
+          }
+        },
+        "q": {
+          "$i": {
+            ".validate": "newData.hasChildren(['id','vid','title','channel','hue'])",
+            "id": {
+              ".validate": "newData.isString() && newData.val().length <= 40"
+            },
+            "vid": {
+              ".validate": "newData.isString() && newData.val().length === 11"
+            },
+            "title": {
+              ".validate": "newData.isString() && newData.val().length <= 300"
+            },
+            "channel": {
+              ".validate": "newData.isString() && newData.val().length <= 120"
+            },
+            "dur": {
+              ".validate": "newData.isNumber()"
+            },
+            "hue": {
+              ".validate": "newData.isNumber()"
+            },
+            "votes": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
     }
   }
 }
